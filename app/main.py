@@ -6,7 +6,7 @@ from app.yeet import Yeeter
 def main():
     args = parse_args()
     yeeter = Yeeter(args.colorize)
-    yeeter.yeet(args.filepath)
+    yeeter.yeet(args.filepath, args.header)
 
 
 def parse_args():
@@ -33,6 +33,17 @@ def parse_args():
         help="Request filepath in .json or .yaml or .yml format",
     )
     ap.add_argument(
+        "-H",
+        "--header",
+        action="append",
+        help="Specify custom HTTP headers (use multiple times for multiple headers)",
+    )
+    ap.add_argument(
         "-c", "--colorize", action="store_true", help="colorize stdout and stderr"
     )
     return ap.parse_args()
+
+
+if __name__ == "__main__":
+    main()
+

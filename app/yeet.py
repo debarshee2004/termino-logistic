@@ -57,8 +57,16 @@ class Yeeter:
             )
 
     # Sends an HTTP request based on the provided file and processes the response.
-    def yeet(self, request_filepath):
+    def yeet(self, request_filepath, headers: list[str]):        
         request_data: dict = read_request_file(request_filepath)
+        cli_headers_dict = {}
+        if headers:
+            for header in headers:
+                key, value = header.split(':', 1)
+                cli_headers_dict[key.strip().lower()] = value.strip()  
+        # Merge headers (CLI headers take precedence)
+        headers = {**{k.lower(): v for k, v in request_data["headers"].items()}, **cli_headers_dict}
+        request_data["headers"] = headers        
         response: Response = request(**request_data)
 
         metadata_text = json.dumps(

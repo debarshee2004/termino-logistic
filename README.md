@@ -1,8 +1,31 @@
 # Termino-logistic
 
-## About
-
 Termino-logistic is a powerful command-line interface (CLI) tool written in Python that allows users to send HTTP requests effortlessly. It is designed to streamline API interactions by supporting request configurations via YAML and JSON files. With Termino-logistic, users can execute various HTTP methods, manage request headers, send query parameters, and handle responses with ease. This tool is ideal for developers and testers who frequently interact with APIs and require a lightweight yet flexible solution.
+
+## Table of Contents
+- [Termino-logistic](#termino-logistic)
+  - [Table of Contents](#table-of-contents)
+  - [How to use](#how-to-use)
+    - [Input Output Redirection](#input-output-redirection)
+    - [Sample request file `myrequest.yml`](#sample-request-file-myrequestyml)
+    - [A full example file `myrequest.yml`](#a-full-example-file-myrequestyml)
+  - [How to Set Up the Project](#how-to-set-up-the-project)
+    - [Clone the Repository in Your Local Environment](#clone-the-repository-in-your-local-environment)
+    - [Setting Up the Environment](#setting-up-the-environment)
+    - [Building and Uploading the Package](#building-and-uploading-the-package)
+      - [Explanation:](#explanation)
+      - [Understanding `setup.py`](#understanding-setuppy)
+  - [How to contribute to this project](#how-to-contribute-to-this-project)
+    - [How you can improve the project](#how-you-can-improve-the-project)
+    - [How to contribute by writing test cases](#how-to-contribute-by-writing-test-cases)
+    - [How to contribute by writing docs](#how-to-contribute-by-writing-docs)
+    - [Important notes](#important-notes)
+    - [How to raise an issue](#how-to-raise-an-issue)
+    - [How to submit a pull request](#how-to-submit-a-pull-request)
+    - [Branch Naming Convention](#branch-naming-convention)
+  - [Conclusion](#conclusion)
+  - [License](#license)
+
 
 ## How to use
 
@@ -19,6 +42,9 @@ termino -f request.json
 termino -f -c request.yml
 # example with using a json file
 termino -f -c request.json
+
+# Sending a GET request with custom headers (Note: this will override existing headers(if any) in .yml or .json file)
+termino -f request.yml -H "Authorization: Bearer mytoken" -H "User-Agent: CustomClient/1.0"
 ```
 
 ### Input Output Redirection
